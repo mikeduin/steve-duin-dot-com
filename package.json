@@ -1,0 +1,16 @@
+{
+  "name": "steve-duin-dot-com",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "scripts": {
+    "dev": "yarn workspace api dev & yarn workspace web dev",
+    "dev:api": "yarn workspace api dev",
+    "dev:web": "yarn workspace web dev",
+    "build": "yarn workspace api build && yarn workspace web build",
+    "typecheck": "yarn workspaces run typecheck"
+  }
+}
