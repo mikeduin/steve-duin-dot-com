@@ -998,7 +998,7 @@ function App() {
         </section>
       ) : view === "table" ? (
         <section className="tableView">
-          <div className="tablePagination tablePaginationTop">
+          <div className="tableTopControls">
             <div className="tablePageControls">
               <button
                 onClick={() => {
@@ -1038,9 +1038,9 @@ function App() {
                 {tableJumpLoading ? "Finding..." : "Go"}
               </button>
             </div>
-          </div>
 
-          <div className="tableToolbar">
+            <span className="tablePaginationDivider" aria-hidden="true" />
+
             <div className="tableSearchInputWrap">
               <input
                 value={tableQuery}
@@ -1067,6 +1067,18 @@ function App() {
                 </button>
               )}
             </div>
+            <button
+              onClick={() => {
+                setTableOffset(0);
+                void refetchTable(buildTableVariables(0));
+              }}
+              disabled={!tableQuery.trim()}
+            >
+              Search
+            </button>
+
+            <span className="tablePaginationDivider" aria-hidden="true" />
+
             <select
               value={selectedTableTag}
               onChange={(event) => {
@@ -1089,14 +1101,6 @@ function App() {
                 </option>
               ))}
             </select>
-            <button
-              onClick={() => {
-                setTableOffset(0);
-                void refetchTable(buildTableVariables(0));
-              }}
-            >
-              Apply Filter
-            </button>
           </div>
 
           <div className="tableSummary">

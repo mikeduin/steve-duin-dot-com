@@ -323,15 +323,14 @@ body {
   gap: 14px;
 }
 
-.tableToolbar {
-  display: grid;
-  grid-template-columns: minmax(240px, 380px) max-content max-content max-content;
-  column-gap: 14px;
-  row-gap: 12px;
-  align-items: center;
+.tableTopControls {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.tableToolbar input {
+.tableTopControls input {
   flex: 1 1 280px;
   padding: 12px 14px;
   border-radius: 10px;
@@ -342,7 +341,8 @@ body {
 
 .tableSearchInputWrap {
   position: relative;
-  width: 100%;
+  width: min(380px, 100%);
+  flex: 1 1 280px;
   min-width: 0;
 }
 
@@ -370,13 +370,7 @@ body {
   color: #0f172a;
 }
 
-@media (max-width: 980px) {
-  .tableToolbar {
-    grid-template-columns: 1fr;
-  }
-}
-
-.tableToolbar select {
+.tableTopControls select {
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #cbd5f5;
@@ -386,7 +380,7 @@ body {
   box-sizing: border-box;
 }
 
-.tableToolbar button,
+.tableTopControls button,
 .tablePagination button {
   padding: 12px 18px;
   border-radius: 10px;
@@ -397,7 +391,7 @@ body {
   cursor: pointer;
 }
 
-.tableToolbar button:disabled,
+.tableTopControls button:disabled,
 .tablePagination button:disabled {
   background: #94a3b8;
   cursor: not-allowed;
@@ -764,16 +758,20 @@ body {
     width: 100%;
   }
 
-  .tableToolbar {
-    flex-direction: column;
+  .tableTopControls {
+    align-items: stretch;
   }
 
-  .tableToolbar button {
+  .tableTopControls button {
     width: 100%;
   }
 
-  .tableToolbar select {
+  .tableTopControls select {
     width: 100%;
+  }
+
+  .tablePaginationDivider {
+    display: none;
   }
 
   .syncControls {
