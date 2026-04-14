@@ -328,7 +328,7 @@ const toHash = (view: View, columnId: string | null) => {
   }
 
   if (view === "table") {
-    return "#inex";
+    return "#index";
   }
 
   return `#${view}`;
