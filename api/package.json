@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dedupe:newsbank": "tsx scripts/dedupe-newsbank-articles.ts",
     "scrape:odnp": "tsx src/scraper/odnp.ts",

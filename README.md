@@ -16,6 +16,36 @@ Monorepo with a GraphQL API and React web app.
 3. Run dev servers:
    - `yarn dev`
 
+## Deployment (Heroku, Single App)
+This repo can run as one Heroku app where the API serves the built web app.
+
+### One-time setup
+1. Create app and Postgres:
+  - `heroku create <your-app-name>`
+  - `heroku addons:create heroku-postgresql:essential-0 -a <your-app-name>`
+2. Set base config vars:
+  - `heroku config:set NODE_ENV=production -a <your-app-name>`
+  - `heroku config:set YARN_PRODUCTION=false -a <your-app-name>`
+3. Deploy:
+  - `git push heroku main`
+
+Heroku uses:
+- `Procfile` `release` process to run migrations.
+- `Procfile` `web` process (`yarn start`) to run the API.
+- Root `heroku-postbuild` script to build both `api` and `web`.
+
+### Optional frontend API override
+The frontend defaults to same-origin `/graphql`. If needed, set:
+- `VITE_GRAPHQL_URL=https://<your-api-host>/graphql`
+
+### Import existing Postgres data
+1. Dump local/source DB:
+  - `pg_dump --format=custom --no-owner --no-acl "$SOURCE_DATABASE_URL" > steve_duin.dump`
+2. Restore into Heroku DB:
+  - `pg_restore --verbose --clean --if-exists --no-owner --no-acl -d "$(heroku config:get DATABASE_URL -a <your-app-name>)" steve_duin.dump`
+3. Verify:
+  - `heroku pg:psql -a <your-app-name>`
+
 ## Scripts
 - `yarn dev` - run API and web in dev mode
 - `yarn dev:api` - API only

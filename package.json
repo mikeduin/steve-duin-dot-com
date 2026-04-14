@@ -11,6 +11,8 @@
     "dev:api": "yarn workspace api dev",
     "dev:web": "yarn workspace web dev",
     "build": "yarn workspace api build && yarn workspace web build",
+    "start": "yarn workspace api start",
+    "heroku-postbuild": "yarn build",
     "typecheck": "yarn workspaces run typecheck"
   }
 }

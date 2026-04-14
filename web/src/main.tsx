@@ -4,8 +4,12 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import App from "./App";
 import "./styles.css";
 
+const graphqlUrl =
+  import.meta.env.VITE_GRAPHQL_URL ??
+  (import.meta.env.DEV ? "http://localhost:4000/graphql" : "/graphql");
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: graphqlUrl,
   cache: new InMemoryCache()
 });
 
