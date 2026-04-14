@@ -9,10 +9,14 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "knex:make": "knex --knexfile knexfile.ts migrate:make",
-    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:rollback": "knex --knexfile knexfile.ts migrate:rollback",
-    "knex:seed": "knex --knexfile knexfile.ts seed:run"
+    "dedupe:newsbank": "tsx scripts/dedupe-newsbank-articles.ts",
+    "scrape:odnp": "tsx src/scraper/odnp.ts",
+    "scrape:newsbank": "tsx src/scraper/newsbank.ts",
+    "scrape:newsbank:one": "tsx src/scraper/newsbank-one.ts",
+    "knex:make": "knex --knexfile knexfile.cjs migrate:make",
+    "knex:migrate": "knex --knexfile knexfile.cjs migrate:latest",
+    "knex:rollback": "knex --knexfile knexfile.cjs migrate:rollback",
+    "knex:seed": "knex --knexfile knexfile.cjs seed:run"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
