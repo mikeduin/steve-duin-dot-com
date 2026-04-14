@@ -5,3 +5,13 @@ node_modules
 dist
 build
 .vscode
+
+# API temporary working files
+/api/.tmp/
+
+# Test and tooling artifacts
+coverage/
+*.log
+.cache/
+.eslintcache
+*.tsbuildinfo
